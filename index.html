@@ -27,60 +27,96 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <style>
-    .header {
-      right: 0;
-      left: auto;
-      text-align: right;
-    }
+      <style>
+        .header {
+          right: 0;
+          left: auto;
+          text-align: right;
+        }
 
-    .navmenu {
-      text-align: right;
-      width: 100%;
-    }
-      .navmenu i {
-        margin-left: 8px; /* Space between icon and text */
-      }
+        .navmenu {
+          text-align: right;
+          width: 100%;
+        }
 
-    .navmenu ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
+        .navmenu i {
+          margin-left: 8px;
+        }
 
-    .navmenu li {
-      width: 100%;
-      text-align: right;
-    }
+        .navmenu ul {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
 
-    .navmenu li a {
-      display: block;
-      text-align: right;
-    }
+        .navmenu li {
+          width: 100%;
+          text-align: right;
+        }
 
-    .header .profile-img,
-    .header .logo {
-      align-self: center;
-      text-align: center;
-      width: 100%;
-    }
+        .navmenu li a {
+          display: block;
+          text-align: right;
+        }
 
-    .header .profile-img img {
-      display: block;
-      margin: 16 auto;
-    }
+        .header .profile-img,
+        .header .logo {
+          align-self: center;
+          text-align: center;
+          width: 100%;
+        }
 
-    .header .logo h1 {
-      text-align: center;
-      margin-top: 10px;
-    }
+        .header .profile-img img {
+          display: block;
+          margin: 16 auto;
+        }
 
-    #hero {
-      margin-right: 300px; /* Adjust based on header width */
-    }
-  </style>
+        .header .logo h1 {
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        #hero {
+          margin-right: 300px;
+        }
+
+        /* HIDE NAVMENU ON SMALL SCREENS */
+        @media (max-width: 991px) {
+          #header {
+            right: -300px;
+            position: fixed;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: #111; /* dark background like before */
+            transition: right 0.3s ease;
+            z-index: 9999;
+          }
+
+          #header.open {
+            right: 0;
+          }
+
+          #hero {
+            margin-right: 0 !important;
+          }
+
+          .header-toggle {
+            display: block;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+          }
+        }
+
+      </style>
+
 </head>
 
 <body class="index-page">
@@ -114,7 +150,7 @@
         <section id="hero" class="hero section dark-background">
           <img src="assets/img/home.jpeg" alt="" data-aos="fade-in">
 
-              <div class="container text-end" style="margin-right: 1000px;" data-aos="fade-up" data-aos-delay="100">
+              <div class="container text-end" style=";" data-aos="fade-up" data-aos-delay="100">
 
             <h2>محمد حسن</h2>
             <p>أنا <span id="typed-1"></span></p>
@@ -219,7 +255,7 @@
 
 
 <!-- About Section -->
-<section id="about" class="about section" style="padding-right: 270px; direction: rtl; text-align: right;">
+<section id="about" class="about section" style=" direction: rtl; text-align: right;">
 
   <!-- Section Title -->
   <div class="container section-title text-end" data-aos="fade-up">
@@ -255,7 +291,7 @@
 </section>
 
 <!-- Skills Section -->
-<section id="skills" class="skills section light-background" style="padding-right: 270px; direction: rtl; text-align: right;">
+<section id="skills" class="skills section light-background" style=" direction: rtl; text-align: right;">
 
   <!-- Section Title -->
   <div class="container section-title text-end" data-aos="fade-up">
@@ -333,7 +369,7 @@
 
   
   </style>
-  <section id="skills" class="skills section light-background" style="padding-right: 270px; direction: rtl; text-align: right;">
+  <section id="skills" class="skills section light-background" style=" direction: rtl; text-align: right;">
   <!-- Section Title -->
   <div class="container section-title text-end" data-aos="fade-up">
     <h2 class="text-end position-relative d-inline-block" style="display: inline-block; padding-bottom: 5px; : ">السيرة الذاتية</h2>
@@ -394,7 +430,7 @@
       
      
     </style>
-    <section id="services" class="about section" style="padding-right: 270px; direction: rtl; text-align: right;">
+    <section id="services" class="about section" style=" direction: rtl; text-align: right;">
 
       <!-- Section Title -->
       <div class="container section-title text-end" data-aos="fade-up">
@@ -482,7 +518,7 @@
     <section id="contact" class="contact section light-background" style="direction: rtl; text-align: right;">
 
       <!-- Section Title -->
-      <section id="services" class="about section" style="padding-right: 270px; direction: rtl; text-align: right;">
+      <section id="services" class="about section" style=" direction: rtl; text-align: right;">
       <div class="container section-title text-end" data-aos="fade-up">
         <h2 class="text-end position-relative d-inline-block" style="display: inline-block; padding-bottom: 5px;">تواصل معي</h2>
         <p>يسعدني تواصلك معي عبر أي وسيلة مناسبة لك</p>
@@ -643,6 +679,17 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.querySelector('.header-toggle');
+      const header = document.getElementById('header');
+
+      toggleBtn.addEventListener('click', () => {
+        header.classList.toggle('open');
+      });
+    });
+  </script>
+
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
