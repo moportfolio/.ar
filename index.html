@@ -679,16 +679,27 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const toggleBtn = document.querySelector('.header-toggle');
-      const header = document.getElementById('header');
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.querySelector('.header-toggle');
+    const header = document.getElementById('header');
 
-      toggleBtn.addEventListener('click', () => {
-        header.classList.toggle('open');
+    // Toggle sidebar on hamburger click
+    toggleBtn.addEventListener('click', () => {
+      header.classList.toggle('open');
+    });
+
+    // Close sidebar when a nav link is clicked (on mobile)
+    document.querySelectorAll('#navmenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 991) {
+          header.classList.remove('open');
+        }
       });
     });
-  </script>
+  });
+</script>
+
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
