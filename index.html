@@ -78,9 +78,53 @@
           margin-top: 10px;
         }
 
-        #hero {
-          margin-right: 300px;
-        }
+          @media (min-width: 992px) {
+            body.index-page {
+              padding-right: 300px; /* Space for sidebar */
+            }
+
+            .main {
+              margin: 0 !important;
+            }
+
+            .section {
+              margin: 0 !important;
+            }
+
+            #hero img {
+              width: 100vw;
+              height: 100vh;
+              object-fit: cover;
+              display: block;
+            }
+
+            #hero {
+              position: relative;
+              z-index: 1;
+            }
+
+            .container {
+              position: relative;
+              z-index: 2;
+            }
+          }
+
+
+          /* Reset for small screens */
+          @media (max-width: 991px) {
+            body.index-page {
+              padding-right: 0 !important;
+            }
+
+            .main {
+              margin-right: 0 !important;
+            }
+
+            .section {
+              margin-right: 0 !important;
+            }
+          }
+
 
         /* HIDE NAVMENU ON SMALL SCREENS */
         @media (max-width: 991px) {
@@ -144,10 +188,23 @@
     </nav>
 
   </header>
+  <div class="hero-lang-switcher">
+    <!-- English -->
+    <a href="https://moportfolio.github.io/.com/" class="lang-icon" title="Switch to English">
+      <img src="https://www.flagpedia.net/data/flags/h80/gb.png" alt="English">
+      <span class="lang-text">English</span>
+    </a>
 
+    <!-- German -->
+    <a href="https://moportfolio.github.io/.de/" class="lang-icon" title="التحويل إلى الألمانية">
+      <img src="https://www.flagpedia.net/data/flags/h80/de.png" alt="Deutsch">
+      <span class="lang-text">Deutsch</span>
+    </a>
+  </div>
   <main class="main">
         <!-- Hero Section -->
-        <section id="hero" class="hero section dark-background">
+        <section id="hero" class="hero section dark-background" style="position: relative;">
+
           <img src="assets/img/home.jpeg" alt="" data-aos="fade-in">
 
               <div class="container text-end" style=";" data-aos="fade-up" data-aos-delay="100">
@@ -157,19 +214,7 @@
             <p class="mt-3">ماهر في <span id="typed-2"></span></p>
           </div>
 
-              <div class="hero-lang-switcher">
-                <!-- English -->
-                <a href="https://moportfolio.github.io/.com/" class="lang-icon" title="Switch to English">
-                  <img src="https://www.flagpedia.net/data/flags/h80/gb.png" alt="English">
-                  <span class="lang-text">English</span>
-                </a>
-
-                <!-- German -->
-                <a href="https://moportfolio.github.io/.de/" class="lang-icon" title="التحويل إلى الألمانية">
-                  <img src="https://www.flagpedia.net/data/flags/h80/de.png" alt="Deutsch">
-                  <span class="lang-text">Deutsch</span>
-                </a>
-              </div>
+              
 
         </section>
 
@@ -205,7 +250,7 @@
             .hero-lang-switcher {
               position: absolute;
               top: 30px;
-              right: 60px;
+              left: 60px;
               z-index: 1000;
               display: flex;
               flex-direction: column; /* Stack vertically */
@@ -233,6 +278,7 @@
               height: 14px;
               transition: transform 0.3s ease, filter 0.3s ease;
             }
+            
 
             .lang-icon:hover img {
               transform: scale(1.2);
