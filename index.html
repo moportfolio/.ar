@@ -110,8 +110,20 @@
           }
 
 
-          /* Reset for small screens */
-          @media (max-width: 991px) {
+          /* HIDE NAVMENU ON SMALL SCREENS */
+          @media (max-width: 1199px) {
+            #header {
+              right: -300px;
+              left: auto;
+              position: fixed;
+              top: 0;
+              width: 300px;
+              height: 100vh;
+              background-color: #111;
+              transition: right 0.3s ease;
+              z-index: 9999;
+            }
+
             body.index-page {
               padding-right: 0 !important;
             }
@@ -123,23 +135,18 @@
             .section {
               margin-right: 0 !important;
             }
+
+            .header-toggle {
+              display: block;
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              font-size: 28px;
+              color: white;
+              cursor: pointer;
+              z-index: 10000;
+            }
           }
-
-
-        /* HIDE NAVMENU ON SMALL SCREENS */
-        @media (max-width: 991px) {
-         #header {
-  right: -300px;
-  left: auto; /* Fix for Firefox: prevents initial flash on left */
-  position: fixed;
-  top: 0;
-  width: 300px;
-  height: 100vh;
-  background-color: #111;
-  transition: right 0.3s ease;
-  z-index: 9999;
-}
-
 
           #header.open {
             right: 0;
@@ -153,7 +160,7 @@
             display: block;
             position: fixed;
             top: 20px;
-            right: 30px;
+            right: 20px;
             font-size: 28px;
             color: white;
             cursor: pointer;
@@ -198,7 +205,7 @@
     </a>
 
     <!-- German -->
-    <a href="https://moportfolio.github.io/.de/" class="lang-icon" title="Wechseln Sie zu Deutsch">
+    <a href="https://moportfolio.github.io/.de/" class="lang-icon" title="التحويل إلى الألمانية">
       <img src="https://www.flagpedia.net/data/flags/h80/de.png" alt="Deutsch">
       <span class="lang-text">Deutsch</span>
     </a>
@@ -727,26 +734,26 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
- <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggleBtn = document.querySelector('.header-toggle');
-    const header = document.getElementById('header');
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggleBtn = document.querySelector('.header-toggle');
+      const header = document.getElementById('header');
 
-    // Toggle sidebar on hamburger click
-    toggleBtn.addEventListener('click', () => {
-      header.classList.toggle('open');
-    });
+      // Toggle sidebar on hamburger click
+      toggleBtn.addEventListener('click', () => {
+        header.classList.toggle('open');
+      });
 
-    // Close sidebar when a nav link is clicked (on mobile)
-    document.querySelectorAll('#navmenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 991) {
-          header.classList.remove('open');
-        }
+      // Close sidebar when a nav link is clicked (on small screens)
+      document.querySelectorAll('#navmenu a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth <= 1199) {
+            header.classList.remove('open');
+          }
+        });
       });
     });
-  });
-</script>
+  </script>
 
 
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
