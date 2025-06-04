@@ -39,6 +39,15 @@
           left: auto;
           text-align: right;
         }
+          .header .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            width: 100%;            /* Make it span full width */
+            padding: 15px 0;
+            margin: 0 auto;          /* Optional: helps with horizontal centering */
+          }
 
         .navmenu {
           text-align: right;
@@ -116,6 +125,25 @@
   object-fit: cover;
   z-index: 1;
 }
+.header .logo {
+  margin-bottom: 10px; /* Reduce space below the name */
+}
+
+.header .sitename {
+  margin: 0;
+  font-size: 24px; /* Optional: smaller font if needed */
+}
+
+.header .social-links {
+  margin-top: 5px;  /* Reduce space above the icons */
+}
+.header .logo {
+  margin-bottom: 5px;
+}
+
+.header .social-links {
+  margin-top: 0;
+}
 
 .hero:before {
   content: "";
@@ -146,18 +174,8 @@
   border-bottom: 2px solid var(--accent-color);
 }
 
-.hero .social-links {
-  margin-top: 25px;
-}
 
-.hero .social-links a {
-  font-size: 24px;
-  display: inline-block;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  line-height: 1;
-  margin-right: 20px;
-  transition: 0.3s;
-}
+
 .header .social-links {
   display: flex;
   justify-content: center;
